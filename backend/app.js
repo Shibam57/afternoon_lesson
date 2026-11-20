@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/images", (req, res) => res.status(404).json({ message: "Image not found" }));
 app.use(cookieParser());
 
+
 const lessonRoutes = require("./routes/lessonRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js");
 const teacherRoutes = require("./routes/teacherRoutes.js");
@@ -30,6 +31,7 @@ const searchRoutes = require("./routes/searchRoutes.js");
 const enrolmentRoutes = require("./routes/enrolmentRoutes.js");
 const adminRoutes = require("./routes/adminRoutes.js");
 
+// Register all backend API routes
 app.use("/lessons", lessonRoutes);
 app.use("/orders", orderRoutes);
 app.use("/teachers", teacherRoutes);
@@ -37,6 +39,12 @@ app.use("/search", searchRoutes);
 app.use("/enrolment", enrolmentRoutes);
 app.use("/admin", adminRoutes);
 
-app.get("/", (req, res) => res.json({ message: "After School API is running" }));
+// Backend test route
+app.get("/", (req, res) => {
+  res.json({
+    message: "After School API is running"
+  });
+});
+
 
 module.exports = app;
